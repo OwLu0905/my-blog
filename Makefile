@@ -1,5 +1,5 @@
 # Define the base command
-BASE_COMMAND := bunx --bun shadcn-ui@latest add
+BASE_COMMAND := pnpm dlx shadcn-ui@latest add
 
 # Rule to run the specified command for the given suffix
 %:
