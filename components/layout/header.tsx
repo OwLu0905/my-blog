@@ -6,6 +6,7 @@ import { Toggle } from "../ui/toggle";
 import { MenuIcon, SearchIcon } from "lucide-react";
 import MobileMenu from "@/container/menu/mobile-menu";
 import { Dialog, DialogTrigger } from "../custom/ui/dialog";
+import Link from "next/link";
 
 const LabName = "Multi-Scale Flow Physics \n & \n Computation Lab";
 
@@ -13,10 +14,10 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 bg-background dark:bg-background flex flex-col md:flex-row items-center justify-center md:justify-around px-4 py-2 md:py-4"
+        "sticky top-0 flex flex-col items-center justify-center bg-background px-4 py-1 dark:bg-background md:flex-row md:justify-around md:py-2",
       )}
     >
-      <div className="cursor-pointer md:hidden flex items-center absolute top-5 left-2">
+      <div className="absolute left-2 top-5 flex cursor-pointer items-center md:hidden">
         <Dialog>
           <DialogTrigger asChild>
             <MenuIcon className="h-5 w-5" />
@@ -24,23 +25,23 @@ export function Header() {
           <MobileMenu />
         </Dialog>
       </div>
-      <div className="flex items-center justify-end md:hidden absolute top-2.5 right-2">
+      <div className="absolute right-2 top-2.5 flex items-center justify-end md:hidden">
         <Toggle>
           <SearchIcon className="h-4 w-4" />
         </Toggle>
         <ModeToggle />
       </div>
-      <div className="flex flex-col md:flex-row items-center gap-2">
-        <div className="text-4xl font-bold py-1 px-6 bg-clip-text text-transparent bg-gradient-to-r from-[#9CECFB] opacity-80 via-[#65C7F7] to-[#0052D4]">
+      <Link href="/" className="flex flex-col items-center gap-2 md:flex-row">
+        <div className="bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4] bg-clip-text px-6 py-1 text-4xl font-bold text-transparent opacity-80">
           LAB
         </div>
-        <h1 className="font-bold text-xs sm:text-md lg:text-lg bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#65C7F7] break-words text-center">
+        <h1 className="sm:text-md break-words bg-gradient-to-r from-primary to-[#65C7F7] bg-clip-text text-center text-xs font-bold text-transparent lg:text-lg">
           {LabName}
         </h1>
-      </div>
+      </Link>
       <nav className="hidden md:flex">
         <MenubarPc />
-        <div className="items-end ml-2">
+        <div className="ml-2 items-end">
           <ModeToggle />
         </div>
       </nav>

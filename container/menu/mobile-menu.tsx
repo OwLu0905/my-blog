@@ -18,10 +18,13 @@ const MobileMenu = () => {
 
   return (
     <DialogContent className="w-full ">
-      <div className="text-4xl font-bold py-1 px-6 bg-clip-text text-transparent bg-gradient-to-r from-[#9CECFB] opacity-80 via-[#65C7F7] to-[#0052D4]">
+      <Link
+        href="/"
+        className="bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4] bg-clip-text py-1 text-4xl font-bold text-transparent opacity-80 sm:px-2"
+      >
         LAB
-      </div>
-      <div className="font-bold text-xs sm:text-md lg:text-lg bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#65C7F7] break-words text-start">
+      </Link>
+      <div className="sm:text-md break-words bg-gradient-to-r from-primary to-[#65C7F7] bg-clip-text py-2 text-start text-xs font-bold text-transparent lg:text-lg">
         {LabName}
       </div>
       <ScrollArea className="h-[calc(100vh-8rem)] pt-6">
@@ -29,21 +32,21 @@ const MobileMenu = () => {
           <ul className="grid grid-cols-12 gap-2">
             {menuTree.map((m) => {
               return (
-                <Card className="col-span-6 group rounded-xl" key={m.title}>
+                <Card className="group col-span-6 rounded-xl" key={m.title}>
                   <DialogClose asChild>
                     <Link href={m.link} className="relative w-full">
                       <h4
                         className={cn(
-                          "absolute top-0 w-auto left-4 text-sm font-bold  group-hover:text-xl group-hover:mx-auto transition-all duratoin-300 ease-linear",
+                          "duratoin-300 absolute left-4 top-0 w-auto text-sm  font-bold transition-all ease-linear group-hover:mx-auto group-hover:text-xl",
                           pathname.toLowerCase() === m.link.toLowerCase()
-                            ? "text-yellow-500"
-                            : "text-primary dark:text-white/60"
+                            ? "text-[#65C7F7] focus:text-[#65C7F7] active:text-[#65C7F7] dark:text-[#65C7F7]"
+                            : "text-gray-500/60 dark:text-white/60",
                         )}
                       >
                         {m.title}
                       </h4>
                       <Image
-                        className="object-fill group-hover:opacity-30 py-8 mx-auto group-hover:scale-125 transition-transform duration-200 ease-linear w-auto block"
+                        className="mx-auto block w-auto object-fill py-8 transition-transform duration-200 ease-linear group-hover:scale-125 group-hover:opacity-30"
                         src={`/menu/${m.title}.png`}
                         alt={m.title}
                         width={"160"}

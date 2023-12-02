@@ -11,26 +11,25 @@ export function MenubarPc() {
   const pathname = usePathname();
   const menuMap = menuTree.map((m) => {
     return (
-      <Link key={m.title} href={m.link}>
-        <MenubarMenu>
-          <MenubarTrigger
-            className={cn(
-              "text-lg hover:text-primary/80 active:text-primary/80",
-              pathname.toLowerCase() === m.link.toLowerCase()
-                ? "text-yellow-500 active:text-yellow-500 focus:text-yellow-500"
-                : "text-primary dark:text-white/60"
-            )}
-            onClick={(e) => {
-              e.currentTarget.dataset["state"] = "closed";
-            }}
-          >
-            {m.title}
-          </MenubarTrigger>
-        </MenubarMenu>
+      <Link
+        key={m.title}
+        href={m.link}
+        className={cn(
+          "flex h-full items-center text-foreground/60 transition-colors hover:text-foreground/80",
+          pathname.toLowerCase() === m.link.toLowerCase()
+            ? "text-[#65C7F7] focus:text-[#65C7F7] active:text-[#65C7F7] dark:text-[#65C7F7]"
+            : "text-gray-500/60 dark:text-white/60",
+        )}
+      >
+        <h4>{m.title}</h4>
       </Link>
     );
   });
-  return <Menubar className=" border-0">{menuMap}</Menubar>;
+  return (
+    <Menubar className="space-x-6 border-0 text-sm font-medium">
+      {menuMap}
+    </Menubar>
+  );
 }
 
 {

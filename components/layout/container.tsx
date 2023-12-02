@@ -8,7 +8,7 @@ type AsProp<C extends React.ElementType> = {
 
 type PolymorphicComponentProps<
   C extends React.ElementType,
-  Props = {}
+  Props = {},
 > = React.PropsWithChildren<Props & AsProp<C>> &
   Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, Props>>;
 
@@ -17,28 +17,23 @@ type PropsType<C extends React.ElementType, P> = PolymorphicComponentProps<
   P
 >;
 
-const Container = React.forwardRef(
-  <C extends React.ElementType = "div">({
-    as,
-    children,
-    className,
-    ...restProps
-  }: PropsType<C, {}>) => {
-    const Component = as || "div";
+const Container = <C extends React.ElementType = "div">({
+  as,
+  children,
+  className,
+  ...restProps
+}: PropsType<C, {}>) => {
+  const Component = as || "div";
 
-    return (
-      <Component
-        className={cn(
-          "max-w-[1440px] mx-auto px-2 md:px-10 lg:px-16",
-          className
-        )}
-        {...restProps}
-      >
-        {children}
-      </Component>
-    );
-  }
-);
+  return (
+    <Component
+      className={cn("mx-auto max-w-[1440px] px-4 md:px-10 lg:px-16", className)}
+      {...restProps}
+    >
+      {children}
+    </Component>
+  );
+};
 
 Container.displayName = "MyContainer";
 export default Container;
