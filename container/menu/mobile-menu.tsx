@@ -47,7 +47,7 @@ const MobileMenu = () => {
                       </h4>
                       <Image
                         className="mx-auto block w-auto object-fill py-8 transition-transform duration-200 ease-linear group-hover:scale-125 group-hover:opacity-30"
-                        src={`/menu/${m.title}.png`}
+                        src={`/menu-assets/${m.title}.png`}
                         alt={m.title}
                         width={"160"}
                         height={"60"}
