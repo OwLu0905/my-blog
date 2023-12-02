@@ -39,4 +39,6 @@ const Container = React.forwardRef(
     );
   }
 );
+
+Container.displayName = "MyContainer";
 export default Container;
