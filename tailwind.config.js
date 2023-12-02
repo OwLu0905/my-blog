@@ -57,6 +57,12 @@ module.exports = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      height: {
+        screen: ["100vh /* fallback for Opera, IE and etc. */", "100dvh"],
+      },
+      minHeight: {
+        screen: ["100vh /* fallback for Opera, IE and etc. */", "100dvh"],
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },

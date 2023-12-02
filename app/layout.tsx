@@ -28,7 +28,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
             disableTransitionOnChange
           >
             <Header />
-            {children}
+            <main className="min-h-screen py-6 bg-accent dark:bg-background">
+              {children}
+            </main>
             <Footer />
           </ThemeProvider>
         </body>

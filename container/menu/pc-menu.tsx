@@ -1,95 +1,48 @@
+"use client";
 import React from "react";
 
-// const MenubarPc = () => {
-//   return (
-//     <div>
-//
-//       <ul className="flex">
-//         <li>Home</li>
-//         <li>About Us</li>
-//         <li>Research</li>
-//         <li>Publication</li>
-//         <li>Data</li>
-//       </ul>
-//
-//     </div>
-//   );
-// };
-
-// export default MenubarPc;
-
-import {
-  Menubar,
-  MenubarCheckboxItem,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarRadioGroup,
-  MenubarRadioItem,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
-  MenubarTrigger,
-} from "@/components/ui/menubar";
+import { Menubar, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
 import Link from "next/link";
-
-//         <li>Home</li>
-//         <li>About Us</li>
-//         <li>Research</li>
-//         <li>Publication</li>
-//         <li>Data</li>
-const menuTree = [
-  { title: "Home", link: "/", children: [] },
-  {
-    title: "About",
-    link: "/",
-    children: [
-      { title: "Group Member", link: "/" },
-      { title: "Former Graduate Students", link: "/" },
-      { title: "Former Postdocs", link: "/" },
-    ],
-  },
-  { title: "Research", link: "/", children: [{ title: "Home1", link: "/" }] },
-  {
-    title: "Publication",
-    link: "/",
-    children: [{ title: "Home1", link: "/" }],
-  },
-  { title: "Data", link: "/", children: [{ title: "Home1", link: "/" }] },
-];
+import { menuTree } from "@/utils/constants";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export function MenubarPc() {
-  const menuMap = menuTree.map((m, idx) => {
+  const pathname = usePathname();
+  const menuMap = menuTree.map((m) => {
     return (
-      <MenubarMenu key={m.title}>
-        {m.children.length > 0 ? (
-          <MenubarTrigger className="text-lg">{m.title}</MenubarTrigger>
-        ) : (
+      <Link key={m.title} href={m.link}>
+        <MenubarMenu>
           <MenubarTrigger
-            className="text-lg"
+            className={cn(
+              "text-lg hover:text-primary/80 active:text-primary/80",
+              pathname.toLowerCase() === m.link.toLowerCase()
+                ? "text-yellow-500 active:text-yellow-500 focus:text-yellow-500"
+                : "text-primary dark:text-white/60"
+            )}
             onClick={(e) => {
               e.currentTarget.dataset["state"] = "closed";
             }}
           >
-            <Link href="/">{m.title}</Link>
+            {m.title}
           </MenubarTrigger>
-        )}
+        </MenubarMenu>
+      </Link>
+    );
+  });
+  return <Menubar className=" border-0">{menuMap}</Menubar>;
+}
 
-        {m.children.length > 0 ? (
+{
+  /* m.children.length > 0 ? (
           <MenubarContent>
             {m.children.map((c, cid) => {
               return (
-                <MenubarItem key={c.title}>
+                <MenubarItem key={c?.title}>
                   <Link href={c.link + `#${c.title}-${cid}`}>{c.title}</Link>
                 </MenubarItem>
               );
             })}
           </MenubarContent>
-        ) : null}
-      </MenubarMenu>
-    );
-  });
-  return <Menubar className=" border-0">{menuMap}</Menubar>;
+        ) : null */
 }

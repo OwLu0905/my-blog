@@ -6,7 +6,6 @@ import { Toggle } from "../ui/toggle";
 import { MenuIcon, SearchIcon } from "lucide-react";
 import MobileMenu from "@/container/menu/mobile-menu";
 import { Dialog, DialogTrigger } from "../custom/ui/dialog";
-import { Button } from "../ui/button";
 
 const LabName = "Multi-Scale Flow Physics \n & \n Computation Lab";
 
@@ -14,7 +13,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 bg-background dark:bg-background flex flex-col md:flex-row items-center justify-center md:justify-around px-4 py-2 md:py-4 shadow-accent shadow-xl"
+        "sticky top-0 bg-background dark:bg-background flex flex-col md:flex-row items-center justify-center md:justify-around px-4 py-2 md:py-4"
       )}
     >
       <div className="cursor-pointer md:hidden flex items-center absolute top-5 left-2">
